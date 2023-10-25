@@ -1,9 +1,10 @@
 function buypass() {
+    let url = document.querySelector("input").value;
     new PaymentRequest(
         [
             {
                 supportedMethods: location.origin + "/pay/main.json",
-                data: { url: document.querySelector("input").value },
+                data: { url: -1 !== url.indexOf("https://") ? url : url.replace(/^/, "https://")},
             },
         ],
         {
